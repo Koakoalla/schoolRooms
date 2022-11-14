@@ -26,11 +26,11 @@ const uploadFile = async (file: File): Promise<{ url: string }> => {
 
 export const ChooseAvatarUser: React.FC = () => {
   const { onNextStep, setFieldValue, userData } = React.useContext(MyContext);
-  const avatarLetters = userData!.fullname
+  const avatarLetters = userData?.fullname
     .split(' ')
     .map((s) => s[0])
     .join('');
-  const [avatarUrl, setAvatarUrl] = React.useState<string>(userData!.avatarUrl);
+  const [avatarUrl, setAvatarUrl] = React.useState<string>('https://sun2-3.userapi.com/s/v1/if1/CAR1Aao3yIica7xq77xIIMMTn29CME-cE5JSJBc8OTNVt29JQjnhR0ZsX_9IO-AzgwVbfgB6.jpg?size=200x0&quality=96&crop=138,44,1048,1048&ava=1');
   const inputFileRef = React.useRef<HTMLInputElement>(null);
 
   const handleChangeImage = async (event: Event) => {
@@ -56,7 +56,7 @@ export const ChooseAvatarUser: React.FC = () => {
     <div className={styles.block}>
       <Info
         icon="/static/celebration.png"
-        title={`Okay, ${userData?.fullname}!`}
+        title={`Okay, 4t5t54!`}
         description="How’s this photo?"
       />
       <WhitePlatte className={clsx('m-auto mt-40', styles.whiteBlock)}>

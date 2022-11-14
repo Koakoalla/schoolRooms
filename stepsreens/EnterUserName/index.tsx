@@ -1,15 +1,14 @@
 import clsx from 'clsx';
 import { WhitePlatte } from '../WhitePlatte';
-import { Button } from '../../components/Button'
-
-
 import styles from './EnterUserName.module.scss';
-import React from 'react';
-import { MyContext} from '../../pages';
-
-export const EnterUserName = () => {
-  const { onNextStep, userData, setFieldValue } = React.useContext(MyContext);
-  const [inputValue, setInputValue] = React.useState<string>(userData!.fullname);
+import React, {useState} from 'react';
+import { UserData } from '../../pages';
+import { MyContext } from '../../pages';
+import { Button } from '../../components/Button';
+import { setUserData } from '../../redux/slices/userSlice';
+export const EnterNameStep = () => {
+  const { onNextStep} = React.useContext(MyContext);
+  const [inputValue, setInputValue] = React.useState<string>(userdata.fullName);
   const nextDisabled = !inputValue;
 
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +16,6 @@ export const EnterUserName = () => {
   };
 
   const onClickNextStep = () => {
-    setFieldValue('fullname', inputValue);
     onNextStep();
   };
 
@@ -25,7 +23,7 @@ export const EnterUserName = () => {
     <div className={styles.block}>
       
       <WhitePlatte className={clsx('m-auto', styles.whiteBlock)}>
-        
+
         <div className="mt-30 mb-30">
           <input
             onChange={handleChangeInput}
@@ -35,8 +33,7 @@ export const EnterUserName = () => {
           />
         </div>
         <Button disabled={nextDisabled} onClick={onClickNextStep}>
-          Next
-          <img className="d-ib ml-10" src="/static/arrow.svg" />
+          next
         </Button>
       </WhitePlatte>
     </div>

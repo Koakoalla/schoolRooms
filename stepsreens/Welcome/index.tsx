@@ -5,12 +5,14 @@ import {Button} from '../../components/Button'
 import { MyContext } from "../../pages";
 
 
-
 export const Welcome: React.FC = () => {
 
     const { onNextStep } = React.useContext(MyContext);
   return (
+   
+  
     <WhitePlatte className={styles.block}>
+      <img className={styles.logo} src="/static/logo.png" alt="Celebration" />
       <h3 className={styles.title}>
         <img className={styles.handWaveImg} src="/static/hand-wave.png" alt="Celebration" />
         Добро пожаловать в SchoolRoom!

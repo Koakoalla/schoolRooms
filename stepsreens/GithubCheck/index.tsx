@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 import styles from './GitHubCheck.module.scss'
 import { MyContext, UserData } from '../../pages';
 import clsx from 'clsx';
+import { Info } from '../../components/Info';
 
 export const GithubCheck = () => {
     const {onNextStep, setUserData} = React.useContext(MyContext);
@@ -13,7 +14,7 @@ export const GithubCheck = () => {
         window.open(
             'http://localhost:3001/auth/github',
             'Auth',
-            'width=500, height=500, status=yes, toolbar=no, location=no, menubar=no',    
+            'width=600, height=700, status=yes, toolbar=no, location=no, menubar=no',    
         );
     };
 
@@ -31,9 +32,10 @@ export const GithubCheck = () => {
       }, []);
 
       return(
-        <div className={styles.block}>
+        <div className={styles.platte}>
       
-      <WhitePlatte className={clsx('m-auto mt-40', styles.whiteBlock)}>
+      <WhitePlatte className={clsx('m-auto mt-40', styles.block)}>
+      <Info/>
         <Button
           onClick={onClickAuth}
           className={clsx(styles.button, 'd-i-flex align-items-center')}>
