@@ -10,10 +10,12 @@ const colors = {
 };
 
 interface ButtonProps {
+  children?: React.ReactNode;
+  className?:string;
   disabled?: boolean;
   color?: keyof typeof colors;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  className?: string;
+ 
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -27,7 +29,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick}
       type="button"
-      className={clsx(className, styles.button, colors[color])}
+      className={clsx(className, styles.button, colors[color!])}
       disabled={disabled}>
       {children}
     </button>

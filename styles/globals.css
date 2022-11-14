@@ -17,11 +17,18 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+
   body {
-    color: rgb(0, 0, 0);
-    background: rgb(127, 159, 120);
+    
+    background: linear-gradient(50deg, #F17C58, #E94584, #24AADB, #27DBB1,#FFDC18, #FF3706);
+    background-attachment: fixed;
+    background-size: 800% 100%;
+    animation: gradient 5s linear infinite;
+    animation-direction: alternate;
+  }
+  @keyframes gradient {
+    0% {background-position: 0%;}
+    100% {background-position: 100%;}
+    
   }
 }

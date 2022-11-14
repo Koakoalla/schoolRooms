@@ -1,13 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
 import { WhitePlatte } from '../WhitePlatte';
-import { Button } from '../../Button';
-import { StepInfo } from '../../StepInfo';
-import { Avatar } from '../../Avatar';
+import { Button } from '../../components/Button';
+import { Info } from '../../components/Info';
+import { Avatar } from '../../components/Avatar';
 
-import styles from './ChooseAvatarStep.module.scss';
-import { MainContext } from '../../../pages';
-import { Axios } from '../../../core/axios';
+import styles from './ChooseAvatarUser.module.scss';
+import { MyContext } from '../../pages'
+import { Axios } from '../../core/axios';
+
 
 const uploadFile = async (file: File): Promise<{ url: string }> => {
   const formData = new FormData();
@@ -23,18 +24,18 @@ const uploadFile = async (file: File): Promise<{ url: string }> => {
   return data;
 };
 
-export const ChooseAvatarStep: React.FC = () => {
-  const { onNextStep, setFieldValue, userData } = React.useContext(MainContext);
-  const avatarLetters = userData.fullname
+export const ChooseAvatarUser: React.FC = () => {
+  const { onNextStep, setFieldValue, userData } = React.useContext(MyContext);
+  const avatarLetters = userData!.fullname
     .split(' ')
     .map((s) => s[0])
     .join('');
-  const [avatarUrl, setAvatarUrl] = React.useState<string>(userData.avatarUrl);
+  const [avatarUrl, setAvatarUrl] = React.useState<string>(userData!.avatarUrl);
   const inputFileRef = React.useRef<HTMLInputElement>(null);
 
   const handleChangeImage = async (event: Event) => {
     const target = event.target as HTMLInputElement;
-    const file = target.files[0];
+    const file = target.files![0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setAvatarUrl(imageUrl);
@@ -53,12 +54,12 @@ export const ChooseAvatarStep: React.FC = () => {
 
   return (
     <div className={styles.block}>
-      <StepInfo
+      <Info
         icon="/static/celebration.png"
         title={`Okay, ${userData?.fullname}!`}
         description="How’s this photo?"
       />
-      <WhiteBlock className={clsx('m-auto mt-40', styles.whiteBlock)}>
+      <WhitePlatte className={clsx('m-auto mt-40', styles.whiteBlock)}>
         <div className={styles.avatar}>
           <Avatar width="120px" height="120px" src={avatarUrl} letters={avatarLetters} />
         </div>
@@ -72,7 +73,7 @@ export const ChooseAvatarStep: React.FC = () => {
           Next
           <img className="d-ib ml-10" src="/static/arrow.svg" />
         </Button>
-      </WhiteBlock>
+      </WhitePlatte>
     </div>
   );
 };
