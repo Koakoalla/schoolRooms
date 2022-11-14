@@ -6,11 +6,9 @@ import { MyContext } from "../../pages";
 
 
 
-export const Welcome = () => {
+export const Welcome: React.FC = () => {
 
     const { onNextStep } = React.useContext(MyContext);
-   
- 
   return (
     <WhitePlatte className={styles.block}>
       <h3 className={styles.title}>
@@ -22,7 +20,7 @@ export const Welcome = () => {
         Команда SchoolRoom.
       </p>
       <div>
-        <Button>
+        <Button onClick={onNextStep}>
           Выберите юзернейм
         </Button>
       </div>
